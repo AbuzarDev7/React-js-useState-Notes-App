@@ -20,8 +20,8 @@ setTasks(copyTasks);
        setHeading('');
   }
 
-  const deleteNote =(index)=>{
-  tasks.splice(index,1)
+  const deleteNote =(idx)=>{
+  tasks.splice(idx,1)
   setTasks([...tasks])
   }
 
