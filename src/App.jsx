@@ -11,7 +11,8 @@ function App() {
   const submitHandler =(e)=>{
        e.preventDefault();
        console.log('form submited');
-     const copyTasks = [...tasks];
+      //  spreacd all notes copy
+     const copyTasks = [...tasks];  
        copyTasks.push({heading,deatails});
 setTasks(copyTasks);
 
