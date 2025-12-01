@@ -19,8 +19,9 @@ setTasks(copyTasks);
        setHeading('');
   }
 
-  const deleteNote =()=>{
-
+  const deleteNote =(index)=>{
+  tasks.splice(index,1)
+  setTasks([...tasks])
   }
 
   return (
@@ -28,7 +29,7 @@ setTasks(copyTasks);
    
 <div className="relative min-h-screen text-white lg:flex overflow-hidden">
 
-  {/* Animated Background */}
+
   <div
     className="absolute inset-0 -z-10 bg-gradient-to-br from-[#0d1b2a] via-[#1b263b] to-[#415a77]"
     style={{
@@ -37,7 +38,7 @@ setTasks(copyTasks);
     }}
   ></div>
 
-  {/* LEFT SIDE FORM */}
+
   <form className="flex flex-col gap-5 lg:w-1/2 p-10 relative z-10" onSubmit={(e)=>{
   submitHandler(e)
   }}>
@@ -62,7 +63,7 @@ setTasks(copyTasks);
 
     <button
       type="submit"
-      className="bg-white hover:bg-white/80 text-black font-semibold px-5 py-3 rounded-lg transition"
+      className="bg-white hover:bg-white/80 text-black font-semibold px-5 py-3 rounded-lg transition" 
     >
       Add Note
     </button>
@@ -75,14 +76,14 @@ setTasks(copyTasks);
 
   <div className="flex flex-wrap items-start justify-start gap-6 mt-6 h-[90%] overflow-auto ">
   {tasks.map((item, idx) => (
-    <div key={idx} className="flex flex-col justify-between h-50 w-48 bg-yellow-100 text-black rounded-xl shadow-xl p-4 bg-[url('https://i.pinimg.com/736x/d3/fd/de/d3fddeeac854bff9b0a253e3a75202a8.jpg')] bg-cover bg-center">
+    <div key={idx} className="flex flex-col justify-between relative h-52 w-40 bg-cover bg-yellow-100 text-black rounded-xl shadow-xl p-4 bg-[url('https://static.vecteezy.com/system/resources/previews/037/152/677/non_2x/sticky-note-paper-background-free-png.png')] overflow-auto break-words">
       <div>
         <h3 className="text-lg font-bold overflow-auto">{item.heading}</h3>
-        <p className="mt-2 text-xs font-semibold text-gray-700 overflow-auto">
+        <p className="mt-2 text-xs font-semibold text-gray-700 break-words">
          {item.deatails}
         </p>
       </div>
-      <button  className="bg-red-500 text-white py-1 text-xs rounded font-bold">
+      <button  className="bg-red-500 text-white py-1 text-xs rounded font-bold" onClick={()=>deleteNote(idx)}>
         Delete
       </button>
     </div>
